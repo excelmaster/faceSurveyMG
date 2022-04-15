@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script defer src="face-api.min.js"></script>
+    <script defer src="script.js"></script>    
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+    <title>FaceSurvey - MG</title>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">FaceSurvey MG</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-header">
+                  Captura de video
+                </div>
+                <div class="card-body">
+                  <video id="video" width="500px" height="350px" autoplay muted></video>
+                  
+                  <h5 class="card-title">Imagen desde WebCam</h5>
+                  <p class="card-text">entrada directa de video. Cada 100 milisegundos se ejecuta el reconocimiento.
+                    Al dar clic en el botón "enviar resultado" se ejecuta el reconocimiento y se muestra en la tabla del costado derecho.
+                  </p>
+                  <a href="#" class="btn btn-primary">Enviar resultado</a>
+                </div>
+              </div>                        
+            </div>
+            <div class="col-sm-4">
+              <div class="card">
+                <div class="card-header">
+                  resultado
+                </div>
+                <div class="card-body">
+                  <div id="canvasDiagrama">                
+                  </div>
+                  <h5 class="card-title">Facial landmarks</h5>
+                  <p class="card-text">el algoritmo hace una medición de los puntos faciales para determinar el sentimiento de la imagen.
+                    Este panel lo presento para que puedan ver de forma gráfica el proceso de reconocimiento
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            <div id="diagrama" class="col-sm-4">
+              <div class="card">
+                <div class="card-header">
+                  Resultados 100 milisegundos
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Emociones</h5>
+                  <p class="card-text">En este demo solo se manejan 7 emociones. Para una implementación más especial se usa otra libreria que puede 
+                    interpretar 25 diferentes emociones. Esta información podría guardarse en base de datos</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <table id="tablaexpresiones" class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Emoción</th>
+                        <th scope="col">Barra</th>
+                        <th scope="col">% Accuracy</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tablebody">
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Disgutado</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>                      
+                    </tbody>
+                  </table>
+                  
+
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
